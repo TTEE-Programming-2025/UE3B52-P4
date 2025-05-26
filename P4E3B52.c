@@ -111,14 +111,28 @@ int main(void) {
             }
 
             case 'b':
+                system("cls");  // 清除畫面
+                printf("----- 所有學生成績 -----\n\n");
+                for (int i = 0; i < studentCount; i++) {
+                float avg = (mathScores[i] + physicsScores[i] + englishScores[i]) / 3.0f;
+                printf("學生 %d：\n", i + 1);
+                printf("  姓名：%s\n", names[i]);
+                printf("  學號：%d\n", ids[i]);
+                printf("  數學：%d\n", mathScores[i]);
+                printf("  物理：%d\n", physicsScores[i]);
+                printf("  英文：%d\n", englishScores[i]);
+                printf("  平均：%.1f\n", avg);
+                printf("------------------------\n");
+                }
+                printf("按任意鍵返回主選單...");
+                system("pause");
                 break;
             case 'c':
                 break;
             case 'd':
                 break;
             case 'e':
-                printf("謝謝使用，再見！\n");
-                return 0;
+                break;
             default:
                 printf("無效的選項，請重新選擇。\n");
                 system("pause");
