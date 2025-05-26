@@ -155,6 +155,34 @@ int main(void) {
                 break;
             }
             case 'd':
+                system("cls");  // 清除畫面
+                int idx[MAX_STUDENTS];
+                for (int i = 0; i < studentCount; i++) {
+                    idx[i] = i;
+                }
+                for (int i = 0; i < studentCount - 1; i++) {
+                    for (int j = i + 1; j < studentCount; j++) {
+                        float avg_i = (mathScores[idx[i]] + physicsScores[idx[i]] + englishScores[idx[i]]) / 3.0f;
+                        float avg_j = (mathScores[idx[j]] + physicsScores[idx[j]] + englishScores[idx[j]]) / 3.0f;
+                        if (avg_j > avg_i) {
+                            int tmp = idx[i];
+                            idx[i] = idx[j];
+                            idx[j] = tmp;
+                        }
+                    }
+                }
+                printf("----- 成績排名 (高→低) -----\n\n");
+                for (int rank = 0; rank < studentCount; rank++) {
+                    int i = idx[rank];
+                    float avg = (mathScores[i] + physicsScores[i] + englishScores[i]) / 3.0f;
+                    printf("%2d. %-10s  學號:%6d  平均:%.1f\n",
+                        rank + 1,
+                        names[i],
+                        ids[i],
+                        avg);
+                }
+                printf("\n按任意鍵返回主選單...");
+                system("pause");
                 break;
             case 'e':
                 break;
