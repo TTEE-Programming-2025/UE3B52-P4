@@ -1,6 +1,7 @@
 //需使用Big5編碼格式開啟檔案，比避免中文變成亂碼
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(void) {
     printf(
@@ -47,6 +48,7 @@ int main(void) {
     int mathScores[MAX_STUDENTS];
     int physicsScores[MAX_STUDENTS];
     int englishScores[MAX_STUDENTS];
+    int found = 0;
     while (1) { 
         system("cls");
         printf("-----------[Grade System]-----------\n");
@@ -127,8 +129,31 @@ int main(void) {
                 printf("按任意鍵返回主選單...");
                 system("pause");
                 break;
-            case 'c':
+            case 'c':{
+                char searchName[30];
+                system("cls");
+                printf("請輸入要搜尋的姓名：");
+                scanf("%s", searchName);
+                for (int i = 0; i < studentCount; i++) {
+                    if (strcmp(names[i], searchName) == 0) {
+                        float avg = (mathScores[i] + physicsScores[i] + englishScores[i]) / 3.0f;
+                        printf("\n>>> 找到學生：%s <<<\n", names[i]);
+                        printf("  學號：%d\n", ids[i]);
+                        printf("  數學：%d\n", mathScores[i]);
+                        printf("  物理：%d\n", physicsScores[i]);
+                        printf("  英文：%d\n", englishScores[i]);
+                        printf("  平均：%.1f\n", avg);
+                        found = 1;
+                        break;
+                    }
+                }
+                if (!found) {
+                    printf("\n錯誤：查無此人 [%s] 的資料。\n", searchName);
+                }
+                printf("\n按任意鍵返回主選單...");
+                system("pause");
                 break;
+            }
             case 'd':
                 break;
             case 'e':
