@@ -49,6 +49,7 @@ int main(void) {
     int physicsScores[MAX_STUDENTS];
     int englishScores[MAX_STUDENTS];
     int found = 0;
+    char confirm;
     while (1) { 
         system("cls");
         printf("-----------[Grade System]-----------\n");
@@ -185,6 +186,19 @@ int main(void) {
                 system("pause");
                 break;
             case 'e':
+                while (1) {
+                system("cls");  // 清螢幕
+                printf("確定離開？(y/n)：");
+                scanf(" %c", &confirm);
+                    if (confirm == 'y'){ 
+                        printf("謝謝使用，再見！\n");
+                        return 0; 
+                    }
+                    else if (confirm == 'n') {
+                        break;    
+                    }
+                }
+                system("pause");
                 break;
             default:
                 printf("無效的選項，請重新選擇。\n");
@@ -195,3 +209,8 @@ int main(void) {
     system("pause");
     return 0;
 }
+//這次的程式作業比較繁瑣，有很多選項需要注意
+//這次在使用switch時，在case內宣告變數會導致無法編譯
+//查詢過才得知無法在switch執行宣告或初始化，後續case會報錯
+//還有索引找尋資料與排序等也是之前不常使用的程式
+//這次程式雖然感覺沒有上次困難，但有點複雜
